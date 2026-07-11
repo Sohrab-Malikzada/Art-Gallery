@@ -226,9 +226,81 @@ box-shadow:0 30px 80px rgba(0,0,0,.18);
 .form-container{
     margin-top:100px;
 }
+
+.museum-bg{
+
+    position:fixed;
+
+    inset:0;
+
+    background:url("image/4aaaff7e1b961e9bcec8c3ec5adb70a6.jpg") center center/cover no-repeat;
+
+    z-index:-2;
+
+    animation: museumMove 18s ease-in-out infinite alternate;
+
+    transform-origin:center center;
+
+}
+
+@keyframes museumMove{
+
+    0%{
+
+        transform:
+        scale(1)
+        translateY(0px);
+
+    }
+
+    50%{
+
+        transform:
+        scale(1.06)
+        translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:
+        scale(1.10)
+        translateY(0px);
+
+    }
+
+}
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.88)
+    );
+    
+
+    z-index:-1;
+
+}
+
+.museum-bg{
+
+    filter:blur(1px);
+
+}
+
 </style>
 
 <body>
+<div class="museum-bg"></div>
+
     <?php
 include("templates/header.php");
 ?>

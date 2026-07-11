@@ -14,20 +14,23 @@
 
 <style>
 
-
 body{
 
-    background:#0f172a;
-
-    height:100vh;
+    min-height:100vh;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
-    font-family:Poppins, sans-serif;
+    font-family:Poppins,sans-serif;
+
+    background:
+    radial-gradient(circle at top,#3b82f620,transparent 35%),
+    radial-gradient(circle at bottom right,#06b6d420,transparent 35%),
+    linear-gradient(135deg,#030712,#0f172a,#111827);
+
+    overflow-x:hidden;
+    overflow-y:auto;
 
 }
 
@@ -249,7 +252,298 @@ input[type="range"]{
 
 }
 
+.blob{
 
+position:fixed;
+
+border-radius:50%;
+
+filter:blur(120px);
+
+z-index:-1;
+
+animation:floatBlob 12s ease-in-out infinite;
+
+}
+
+.one{
+
+width:300px;
+height:300px;
+
+background:#2563eb;
+
+top:-80px;
+left:-80px;
+
+}
+
+.two{
+
+width:250px;
+height:250px;
+
+background:#06b6d4;
+
+bottom:-80px;
+right:-60px;
+
+animation-delay:2s;
+
+}
+
+.three{
+
+width:200px;
+height:200px;
+
+background:#9333ea;
+
+top:45%;
+left:55%;
+
+animation-delay:5s;
+
+}
+
+@keyframes floatBlob{
+
+0%,100%{
+
+transform:translateY(0) scale(1);
+
+}
+
+50%{
+
+transform:translateY(-35px) scale(1.1);
+
+}
+
+}
+
+.music-player{
+
+width:440px;
+
+padding:35px;
+
+border-radius:32px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(35px);
+
+border:1px solid rgba(255,255,255,.15);
+
+box-shadow:
+
+0 30px 80px rgba(0,0,0,.55),
+
+inset 0 1px 0 rgba(255,255,255,.25);
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+.music-player::before{
+
+content:"";
+
+position:absolute;
+
+left:-150px;
+
+top:-150px;
+
+width:300px;
+height:300px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle,
+
+rgba(56,189,248,.25),
+
+transparent);
+
+filter:blur(40px);
+
+}
+
+.music-header i{
+
+font-size:60px;
+
+color:#38bdf8;
+
+text-shadow:
+
+0 0 20px #38bdf8,
+
+0 0 50px #38bdf8;
+
+animation:pulse 3s infinite;
+
+}
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+.album{
+
+width:180px;
+height:180px;
+
+margin:auto;
+
+border-radius:50%;
+
+overflow:hidden;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.5);
+
+animation:rotateAlbum 25s linear infinite;
+
+}
+
+.album img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+}
+
+@keyframes rotateAlbum{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+
+.controls button{
+
+width:58px;
+
+height:58px;
+
+border-radius:50%;
+
+background:
+
+linear-gradient(180deg,
+
+#38bdf8,
+
+#0284c7);
+
+box-shadow:
+
+0 10px 30px rgba(56,189,248,.45);
+
+transition:.35s;
+
+}
+
+.controls button:hover{
+
+transform:
+
+translateY(-6px)
+
+scale(1.08);
+
+}
+
+
+.playlist div{
+
+padding:14px;
+
+border-radius:16px;
+
+margin:10px 0;
+
+background:rgba(255,255,255,.06);
+
+transition:.35s;
+
+}
+
+.playlist div:hover{
+
+transform:translateX(10px);
+
+background:#0ea5e9;
+
+}
+
+input[type=range]{
+
+accent-color:#38bdf8;
+
+height:7px;
+
+}
+
+.music-player{
+
+animation:show .8s ease;
+
+}
+
+@keyframes show{
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(40px)
+
+scale(.95);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+
+translateY(0)
+
+scale(1);
+
+}
+
+}
 
 
 </style>
@@ -267,169 +561,78 @@ include("templates/footer.php");
 
 
 
-<div class="music-player mt-[100px] " >
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
 
+<div class="music-player mt-[100px] mb-[40px]">
 
+    <div class="album">
+        <img src="image/Art (40).jpg">
+    </div>
 
-<div class="music-header">
+    <div class="music-header">
+        <i class="bi bi-music-note-beamed"></i>
+        <h3>Gallery Music</h3>
+    </div>
 
+    <video id="music" style="display:none"></video>
 
-<i class="bi bi-music-note-beamed"></i>
+    <div class="song-name" id="songName">
+        Relax Music
+    </div>
 
+    <div class="controls">
 
-<h3>
-Gallery Music
-</h3>
+        <button onclick="previousSong()">
+            <i class="bi bi-skip-backward-fill"></i>
+        </button>
 
+        <button id="playBtn">
+            <i class="bi bi-play-fill"></i>
+        </button>
 
-</div>
+        <button onclick="nextSong()">
+            <i class="bi bi-skip-forward-fill"></i>
+        </button>
 
+    </div>
 
+    <input
+        type="range"
+        id="progress"
+        value="0"
+        min="0"
+        max="100">
 
+    <div class="time">
+        <span id="current">0:00</span>
+        <span id="duration">0:00</span>
+    </div>
 
-<video id="music" style="display:none"></video>
+    <br>
 
+    <label>🔊 Volume</label>
 
+    <input
+        type="range"
+        id="volume"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.5">
 
+    <div class="playlist">
 
-<div class="song-name" id="songName">
+        <h5>Playlist</h5>
 
-Relax Music
+        <div onclick="changeSong(0)">🎵 Relax Music</div>
 
-</div>
+        <div onclick="changeSong(1)">🎹 Piano</div>
 
+        <div onclick="changeSong(2)">🌿 Nature Sound</div>
 
-
-
-
-<div class="controls">
-
-
-<button onclick="previousSong()">
-
-<i class="bi bi-skip-backward-fill"></i>
-
-</button>
-
-
-
-<button onclick="playMusic()" id="playBtn">
-
-<i class="bi bi-play-fill"></i>
-
-</button>
-
-
-
-<button onclick="nextSong()">
-
-<i class="bi bi-skip-forward-fill"></i>
-
-</button>
-
-
-</div>
-
-
-
-
-
-<input 
-type="range"
-id="progress"
-value="0"
-min="0"
-max="100">
-
-
-
-
-
-<div class="time">
-
-
-<span id="current">
-
-0:00
-
-</span>
-
-
-
-<span id="duration">
-
-0:00
-
-</span>
-
-
-</div>
-
-
-
-
-
-<br>
-
-
-<label>
-
-🔊 Volume
-
-</label>
-
-
-<input
-
-type="range"
-
-id="volume"
-
-min="0"
-
-max="1"
-
-step="0.01"
-
-value="0.5"
-
->
-
-
-
-
-<div class="playlist">
-
-
-<h5>
-
-Playlist
-
-</h5>
-
-
-
-<div onclick="changeSong(0)">
-🎵 Relax Music
-</div>
-
-
-
-<div onclick="changeSong(1)">
-🎹 Piano
-</div>
-
-
-
-<div onclick="changeSong(2)">
-🌿 Nature Sound
-</div>
-
-
-
-</div>
-
-
+    </div>
 
 </div>
 
