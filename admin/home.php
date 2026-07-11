@@ -142,10 +142,13 @@ body{
     rgba(0,255,255,.25),
     transparent 70%);
 
-    filter:blur(140px);
+    filter:blur(90px);
+    opacity:.8;
 
     pointer-events:none;
 }
+
+
 
 /* ===========================
    Paint
@@ -166,20 +169,16 @@ body{
     border:1px solid rgba(255,255,255,.06);
 
     box-shadow:
+    0 15px 35px rgba(0,0,0,.45),
+    0 0 10px rgba(255,255,255,.05);
 
-    0 25px 55px rgba(0,0,0,.65),
-
-    0 0 30px rgba(255,255,255,.05);
-
+    /*  Reflection  */
     -webkit-box-reflect:
-
-    below 6px
-
+    below 8px
     linear-gradient(
-
-    transparent,
-
-    rgba(255,255,255,.12));
+    transparent 20%,
+    rgba(255,255,255,.25) 60%,
+    rgba(255,255,255,.05));
 
 }
 
@@ -560,7 +559,14 @@ for(let r=0;r<rows;r++){
            شفافیت
         */
 
-        img.style.opacity = 0.12 + (r*0.11);
+           
+
+       const opacityLevels = [0.4, 0.6, 0.9, 1];
+       const brightness = [35, 50, 75, 100];
+
+       img.style.opacity = opacityLevels[r];
+       img.style.filter = `brightness(${brightness[r]}%)`;
+
 
         /*
            لایه
