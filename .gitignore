@@ -3,3 +3,4 @@ vendor/
 .env
 *.log
 .DS_Store
+admin/music/
