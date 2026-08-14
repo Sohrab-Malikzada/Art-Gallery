@@ -6,11 +6,11 @@
 
 The project was built from scratch using **PHP, MySQL, JavaScript, Bootstrap, HTML5, and CSS3**, with a focus on practical full-stack web development, database integration, dynamic content rendering, and user-friendly interface design.
 
-![Art Gallery Preview](./image/1784712671257.jpg)
+![Art Gallery Preview](/image/1784712671257.jpg)
 
 ## 🌐 Live Demo
 
-[View Live Website](sohrabartgallery.lovestoblog.com)
+[View Live Website](https;//sohrabartgallery.lovestoblog.com)
 
 ## Key Features
 
