@@ -10,7 +10,7 @@ The project was built from scratch using **PHP, MySQL, JavaScript, Bootstrap, HT
 
 ## 🌐 Live Demo
 
-[View Live Website](https;//sohrabartgallery.lovestoblog.com)
+[View Live Website](http://sohrabartgallery.lovestoblog.com/)
 
 ## Key Features
 
