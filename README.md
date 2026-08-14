@@ -6,7 +6,16 @@
 
 The project was built from scratch using **PHP, MySQL, JavaScript, Bootstrap, HTML5, and CSS3**, with a focus on practical full-stack web development, database integration, dynamic content rendering, and user-friendly interface design.
 
-![Art Gallery Preview](.admin/image/1784712670576.jpg)
+Art Gallery Studio:
+<p align="center">
+  <a href="http://sohrabartgallery.lovestoblog.com/" target="_blank">
+    <img 
+      src="./admin/image/1784712671257 (1).jpg" 
+      alt="Art Gallery Studio Website Preview"
+      width="100%"
+    />
+  </a>
+</p>
 
 ## 🌐 Live Demo
 
